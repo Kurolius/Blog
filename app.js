@@ -4,6 +4,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
+var signUpRouter = require('./routes/signUp');
 var usersRouter = require('./routes/users');
 var articlesRouter = require('./routes/articles');
 var commentsRouter = require('./routes/comments');
@@ -22,5 +23,5 @@ app.use('/users', usersRouter);
 app.use('/articles', articlesRouter);
 app.use('/comments', commentsRouter);
 app.use('/tags', tagsRouter);
-
+app.use('/signUp', signUpRouter);
 module.exports = app;
