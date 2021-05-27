@@ -9,6 +9,7 @@ router.post('/auth', async function(req, res) {
   var user = req.body.username;
   var pass = req.body.pass;
   if((await usersRepo.verifUser(user,pass)) != 0){
+    global.globalString = user;
     res.redirect('/users');
   }else{
     res.send('Incorrect Username and/or Password!');
