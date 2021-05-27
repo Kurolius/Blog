@@ -1,15 +1,16 @@
 const { Article } = require('../models')
+var sequelize = require('sequelize');
  module.exports = {
    getAllArticles() {
      return Article.findAll()
    },
    // méthodes à implémenter
-   getComments(offset = 0, limit = 10){
-    return  sequelize.query("SELECT * FROM Articles LIMIT "+ limit +" OFFSET "+offset)
+   getArticles(offset = 0, limit = 10){
+    return  Article.findAll({ offset: offset, limit: limit });
   } ,
 
 
-   getArticles(id) {
+   getArticlesById(id) {
     var x= Article.findAll({
       where: {       
           id: id

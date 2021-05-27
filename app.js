@@ -2,7 +2,6 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
 var indexRouter = require('./routes/index');
 var signUpRouter = require('./routes/signUp');
 var usersRouter = require('./routes/users');
@@ -11,7 +10,6 @@ var commentsRouter = require('./routes/comments');
 var tagsRouter = require('./routes/tags');
 
 var app = express();
-
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
