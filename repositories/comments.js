@@ -3,15 +3,41 @@ const { Comment } = require('../models')
    getAllComments() {
      return Comment.findAll()
    },
-   // méthodes à implémenter
-   getUsers(offset = 0, limit = 10) { },
-   getAdmins() { },
-   getAuthors() { },
-   getGuests(){ }, 
-   getUser(id) { },
-   getUserByEmail(email) { },
-   addUser(user) { },
-   updateUser() { },
-   deleteUser() { },
+   getComments(offset = 0, limit = 10){
+    return  sequelize.query("SELECT * FROM Comments LIMIT "+ limit +" OFFSET "+offset)
+  } ,
+
+
+   getComments(id) {
+    var x= Comment.findAll({
+      where: {       
+          id: id
+      }
+    });
+    return x
+    },
+
+
+    async addComments(Comments) { 
+      await Comment.create(Tags);
+    },
+      
+
+    async updateComments(id,Comments) { 
+    await Comment.update(Tags, {
+      where: {
+        id: id
+      }
+    });
+    },
+
+
+    async deleteComments(id) { 
+    await Comment.destroy({
+      where: {
+        id: id
+      }
+    });
+  },
    // D'autres méthodes jugées utiles
  }

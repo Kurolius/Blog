@@ -4,14 +4,41 @@ const { Tag } = require('../models')
      return Tag.findAll()
    },
    // méthodes à implémenter
-   getUsers(offset = 0, limit = 10) { },
-   getAdmins() { },
-   getAuthors() { },
-   getGuests(){ }, 
-   getUser(id) { },
-   getUserByEmail(email) { },
-   addUser(user) { },
-   updateUser() { },
-   deleteUser() { },
+   getTags(offset = 0, limit = 10){
+    return  sequelize.query("SELECT * FROM Tags LIMIT "+ limit +" OFFSET "+offset)
+  } ,
+
+
+   getTags(id) {
+    var x= Tag.findAll({
+      where: {       
+          id: id
+      }
+    });
+    return x
+    },
+
+
+    async addTags(Tags) { 
+      await Tag.create(Tags);
+    },
+      
+
+    async updateTags(id,Tags) { 
+    await Tag.update(Tags, {
+      where: {
+        id: id
+      }
+    });
+    },
+
+
+    async deleteTags(id) { 
+    await Tag.destroy({
+      where: {
+        id: id
+      }
+    });
+  },
    // D'autres méthodes jugées utiles
  }
